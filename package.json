@@ -10,6 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.4"
+    "astro": "^4.15.4",
+    "astro-seo": "^0.8.4",
+    "swiper": "^11.1.12"
   }
 }

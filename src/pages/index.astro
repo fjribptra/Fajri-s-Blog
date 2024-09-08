@@ -1,16 +1,129 @@
 ---
-
+import MainLayouts from "../layouts/MainLayouts.astro";
+import Card from "../components/Card.astro";
+import { getCollection } from "astro:content";
+import CarouselSlider from "../components/CarouselSlider.astro";
+import { SEO } from "astro-seo";
+const blogPosts = await getCollection("blog");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayouts title="Home Page">
+	<SEO
+	  slot="seo"
+      title="Fajri's Blog @fjribptra"
+      description="A heavily optimized description full of well-researched keywords."
+      openGraph={{
+        basic: {
+          title: "Fajri's Blog @fjribptra",
+          type: "A type.",
+          image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+        }
+      }}
+      twitter={{
+        creator: "@fjribptra"
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+          },
+          { name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
+          { name: "twitter:description", content: "Agent" },
+        ],
+      }}
+    />
+	<CarouselSlider blogPosts={blogPosts}/>
+	<div class="container d-flex flex-column jusify-content-center mt-5">
+		<h2>Articles</h2> 
+		<ul class="post-container">
+			{
+			blogPosts.map((post) => (
+					<li class="card-container col">
+						<Card props={post}/>
+					</li>
+					
+			))
+			}
+		</ul>
+	</div>
+</MainLayouts>
+<style>
+	/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  /* Styles for phones */
+  .post-container {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: 1fr;
+	padding: 0;
+}
+.card-container {
+	margin-top: 25px;
+}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Styles for small devices like landscape phones */
+  .post-container {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 0;
+	gap: 15px;
+}
+.card-container {
+	margin-top: 25px;
+}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Styles for tablets */
+  .post-container {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 0;
+	gap: 15px;
+}
+.card-container {
+	margin-top: 25px;
+}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Styles for desktops */
+  .post-container {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 0;
+	gap: 15px;
+}
+.card-container {
+	margin-top: 25px;
+}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Styles for large desktops */
+  .post-container {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 0;
+	gap: 15px;
+}
+.card-container {
+	margin-top: 25px;
+}
+}
+
+</style>

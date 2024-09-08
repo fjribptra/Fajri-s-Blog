@@ -1,0 +1,136 @@
+---
+import { getCollection } from "astro:content";
+import MainLayouts from "../../layouts/MainLayouts.astro";
+import { Image } from "astro:assets";
+import pajri from '../../../public/pajri.jpg'
+import { formatDate } from "../../lib/formatDate";
+
+
+export const getStaticPaths = async () => {
+    const blogPosts = await getCollection("blog");
+    return blogPosts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const props = Astro.props
+const render = await props.post.render()
+
+---
+<MainLayouts title="Blog Page">
+    <div class="container d-flex flex-column gap-3">
+        <h1 class="text-center pt-5 fw-bold">{props.post.data.title}</h1>
+        <div class="d-flex gap-3" style="margin: 0 auto">
+            <Image id="imageAuthor" class={"rounded-circle"} src={pajri} alt={props.post.data.title} />
+            <div class="d-flex flex-column justify-content-center">
+                <p id="author" class="fw-bold m-0">{props.post.data.author}</p>
+                <p id="date" class="m-0">{formatDate(props.post.data.publishedAt)}</p>
+            </div>
+        </div>
+        <Image id="imageHero" class={"rounded"} inferSize={true} style="" src={props.post.data.image} alt={props.post.data.title} />
+        <div class="mt-5">
+            <render.Content/>
+        </div>
+    </div>
+</MainLayouts>
+<style>
+    /* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    #imageAuthor {
+    width: 40px;
+    height: 40px;
+}
+#author {
+    font-size: 15px;
+}
+#date {
+    font-size: 12px;
+}
+  #imageHero {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Styles for small devices like landscape phones */
+  #imageAuthor {
+    width: 40px;
+    height: 40px;
+}
+#author {
+    font-size: 15px;
+}
+#date {
+    font-size: 12px;
+}
+  #imageHero {
+    width: 100%; 
+    height:500px; 
+    margin: 0 auto;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Styles for tablets */
+  #imageAuthor {
+    width: 40px;
+    height: 40px;
+}
+  #author {
+    font-size: 15px;
+}
+#date {
+    font-size: 12px;
+}
+  #imageHero {
+    width: 100%; 
+    height:500px; 
+    margin: 0 auto;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Styles for desktops */
+  #imageAuthor {
+    width: 60px;
+    height: 60px;
+}
+  #author {
+    font-size: 17px;
+}
+#date {
+    font-size: 15px;
+}
+  #imageHero {
+    width: 800px; 
+    height:500px; 
+    margin: 0 auto;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Styles for large desktops */
+  #imageAuthor {
+    width: 60px;
+    height: 60px;
+}
+  #author {
+    font-size: 17px;
+}
+#date {
+    font-size: 15px;
+}
+  #imageHero {
+    width: 800px; 
+    height:500px; 
+    margin: 0 auto;
+  }
+}
+
+</style>

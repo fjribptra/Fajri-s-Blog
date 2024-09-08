@@ -1,0 +1,12 @@
+---
+import { formatDate } from "../lib/formatDate"
+
+const props = Astro.props
+---
+<div class="card">
+    <img height="300" src={props.props.data.image} class="card-img-top" alt="...">
+    <div class="card-body">
+      <a href={`/blog/${props.props.slug}`} class="card-text text-decoration-none text-black fw-bold fs-4">{props.props.data.title}</a>
+      <p>{formatDate(props.props.data.publishedAt)}</p>
+    </div>
+  </div>

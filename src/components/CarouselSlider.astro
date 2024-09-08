@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets"
+  
+const props = Astro.props
+const posts = props.blogPosts.filter((post) => post.data.isPinned)
+console.log(posts)
+---
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <!-- <div class="carousel-item active">
+            <img class="image-slider" src="https://images.unsplash.com/photo-1629654291663-b91ad427698f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="image-slider" src="https://plus.unsplash.com/premium_photo-1682146029185-198922bd8350?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="image-slider" src="https://images.unsplash.com/photo-1640552435388-a54879e72b28?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div> -->
+        {
+        posts.map(post => ( 
+        <div class="carousel-item active" data-bs-interval="2000">
+            <Image inferSize={true} class="image-slider" src={post.data.image} alt={post.data.title}/>
+            <div class="carousel-caption">
+                <a class="text-white text-decoration-none fw-bold fs-3" href={`/blog/${post.slug}`}>{post.data.title}</a>
+                <p>{post.data.excerpt}</p>
+            </div>
+        </div>
+         ))
+        } 
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <style>
+        /* Extra small devices (phones, less than 576px) */
+    @media (max-width: 575.98px) {
+    /* Styles for phones */
+    .image-slider {
+        width: 100%;
+        height: 300px;
+    }
+    }
+
+    /* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+    /* Styles for small devices like landscape phones */
+    .image-slider {
+        width: 100%;
+        height: 300px;
+    }
+    }
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+    /* Styles for tablets */
+    .image-slider {
+        width: 100%;
+        height: 500px;
+    }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Styles for desktops */
+    .image-slider {
+        width: 100%;
+        height: 500px;
+    }
+    }
+
+    /* Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {
+    /* Styles for large desktops */
+    .image-slider {
+        width: 100%;
+        height: 500px;
+    }
+    }
+
+  </style>
+  
