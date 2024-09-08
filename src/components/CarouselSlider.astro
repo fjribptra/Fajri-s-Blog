@@ -3,7 +3,6 @@ import { Image } from "astro:assets"
   
 const props = Astro.props
 const posts = props.blogPosts.filter((post) => post.data.isPinned)
-console.log(posts)
 ---
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">

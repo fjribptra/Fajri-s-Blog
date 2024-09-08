@@ -4,6 +4,7 @@ import MainLayouts from "../../layouts/MainLayouts.astro";
 import { Image } from "astro:assets";
 import pajri from '../../../public/pajri.jpg'
 import { formatDate } from "../../lib/formatDate";
+import { SEO } from "astro-seo";
 
 
 export const getStaticPaths = async () => {
@@ -19,6 +20,34 @@ const render = await props.post.render()
 
 ---
 <MainLayouts title="Blog Page">
+  <SEO
+	  slot="seo"
+      title={props.post.data.title}
+      description={props.post.data.excerpt}
+      openGraph={{
+        basic: {
+          title: props.post.data.title,
+          type: "A type.",
+          image: props.post.data.image,
+        }
+      }}
+      twitter={{
+        creator: "@fjribptra"
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: props.post.data.image,
+          },
+          { name: "twitter:title", content: props.post.data.title },
+          { name: "twitter:description", content: "Agent" },
+        ],
+      }}
+    />
     <div class="container d-flex flex-column gap-3">
         <h1 class="text-center pt-5 fw-bold">{props.post.data.title}</h1>
         <div class="d-flex gap-3" style="margin: 0 auto">
