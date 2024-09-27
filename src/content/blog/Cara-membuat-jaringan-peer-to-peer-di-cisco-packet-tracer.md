@@ -4,7 +4,7 @@ publishedAt: '2024-08-06T00:00:00.0502'
 author: 'pajri'
 image: 'https://fjribptra.wordpress.com/wp-content/uploads/2024/08/screenshot-2024-08-01-111720.png?w=464'
 category: 'Networking'
-isPinned: false
+isPinned: true
 excerpt: 'Jaringan peer to peer, sesuai namanya peer to peer simpelnya adalah sebuah jaringan komputer yang mengbungkan dua komputer secara langsung tanpa melalui swith atau hub.'
 ---
 ## Cara Membuat Jaringan Peer to Peer di Cisco Packet Tracer

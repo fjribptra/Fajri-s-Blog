@@ -8,14 +8,14 @@ import { SEO } from "astro-seo";
 const blogPosts = await getCollection("blog");
 ---
 
-<MainLayouts title="Home Page">
+<MainLayouts title="Home Page | Pajri's Blog">
 	<SEO
 	  slot="seo"
-      title="Fajri's Blog | fjribptra"
+      title="Pajri's Blog | fjribptra"
       description="Hello my name is Fajri from Indonesia, here you can find my blog journal"
       openGraph={{
         basic: {
-          title: "Fajri's Blog | fjribptra",
+          title: "Pajri's Blog | fjribptra",
           type: "A type.",
           image: "/blog-thumbnail.png",
         }
@@ -37,8 +37,8 @@ const blogPosts = await getCollection("blog");
         ],
       }}
     />
-	<CarouselSlider blogPosts={blogPosts}/>
-	<div class="container d-flex flex-column jusify-content-center mt-5">
+	<!-- <CarouselSlider blogPosts={blogPosts}/> -->
+	<div class="container d-flex flex-column jusify-content-center pt-5">
 		<h2>Articles</h2> 
 		<ul class="post-container">
 			{

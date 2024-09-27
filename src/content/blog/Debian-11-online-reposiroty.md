@@ -4,18 +4,18 @@ publishedAt: '2024-08-06T00:00:00.0502'
 author: 'pajri'
 image: 'https://github.com/user-attachments/assets/0534899f-b7bf-4d3c-9a75-58d6eb904614'
 category: 'Networking'
-isPinned: false
+isPinned: true
 excerpt: 'Jaringan peer to peer, sesuai namanya peer to peer simpelnya adalah sebuah jaringan komputer yang mengbungkan dua komputer secara langsung tanpa melalui swith atau hub.'
 ---
 
 ## Debian 11 Online Repository Bullseye
 
- 1. Type :
+ 1. Untuk mengedit repository, ketik :
  ``` bash
- nano /etc/apt/sources.list
+ sudo nano /etc/apt/sources.list
  ```
 
-2. Enter this repository
+2. Masukan repo berikut
 
 ``` bash
     deb http://deb.debian.org/debian bullseye main contrib non-free
@@ -35,6 +35,6 @@ excerpt: 'Jaringan peer to peer, sesuai namanya peer to peer simpelnya adalah se
 
 4. Update and upgrade repository
 ```bash
-apt update && apt upgrade
+sudo apt update && apt upgrade
 ```
 

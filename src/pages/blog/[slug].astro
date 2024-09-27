@@ -6,7 +6,6 @@ import pajri from '../../../public/pajri.jpg'
 import { formatDate } from "../../lib/formatDate";
 import { SEO } from "astro-seo";
 
-
 export const getStaticPaths = async () => {
     const blogPosts = await getCollection("blog");
     return blogPosts.map((post) => ({
@@ -49,7 +48,7 @@ const render = await props.post.render()
         ],
       }}
     />
-    <div class="container d-flex flex-column gap-3">
+    <div class="detail-blog-container example container d-flex flex-column gap-3 items-center justify-centergit overflow-scroll">
         <h1 class="text-center pt-5 fw-bold">{props.post.data.title}</h1>
         <div class="d-flex gap-3" style="margin: 0 auto">
             <Image id="imageAuthor" class={"rounded-circle"} src={pajri} alt={props.post.data.title} />
@@ -84,6 +83,21 @@ contentMarkdown.innerHTML = updatedStr;
 console.log(updatedContent)
 </script>
 <style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+  .detail-blog-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
   .content-markdown {
     max-width: 720px;
     margin: 0 auto;
@@ -160,8 +174,8 @@ console.log(updatedContent)
     font-size: 15px;
 }
   #imageHero {
-    width: 800px; 
-    height:500px; 
+    width: 100%; 
+    height:auto; 
     margin: 0 auto;
   }
 }
@@ -180,8 +194,8 @@ console.log(updatedContent)
     font-size: 15px;
 }
   #imageHero {
-    width: 800px; 
-    height:500px; 
+    width: 100%; 
+    height:auto; 
     margin: 0 auto;
   }
 }
